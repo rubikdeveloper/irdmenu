@@ -2,19 +2,30 @@
 
 import { useState } from "react";
 
-const MenuItem = ({ item }) => {
-  const [expanded, setExpanded] = useState(false);
+type MenuItemType = {
+  name: string;
+  description: string;
+  cookingMethod: string;
+  allergens: string[];
+};
 
+type MenuItemProps = {
+  item: MenuItemType;
+  isExpanded: boolean;
+  toggleExpand: (itemName: string) => void;
+};
+
+const MenuItem = ({ item, isExpanded, toggleExpand }: MenuItemProps) => {
   return (
-    <div className="border p-4 mb-2">
+    <div className="border p-4 mb-4 w-full md:w-1/2 lg:w-1/3">
       <div
-        className="flex justify-between items-center"
-        onClick={() => setExpanded(!expanded)}
+        className="flex justify-between items-center cursor-pointer"
+        onClick={() => toggleExpand(item.name)}
       >
         <h2 className="font-semibold">{item.name}</h2>
-        <button>{expanded ? "-" : "+"}</button>
+        <button className="text-xl">{isExpanded ? "-" : "+"}</button>
       </div>
-      {expanded && (
+      {isExpanded && (
         <div className="mt-2 text-sm">
           <p>{item.description}</p>
           <p>Cooking method: {item.cookingMethod}</p>
