@@ -25,7 +25,7 @@ export default function RootLayout({
           <Tabs />
           <main className="flex-1">{children}</main>
           <footer className="bg-gray-800 text-white p-4 text-center">
-            &copy; 2024 Hotel. All rights reserved.
+            &copy; 2024 NoMad. All rights reserved.
           </footer>
         </div>
       </body>

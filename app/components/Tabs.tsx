@@ -8,7 +8,8 @@ const tabs = [
   { name: "SideHustle", path: "/sidehustle" },
   { name: "Bar", path: "/bar" },
   { name: "Wines", path: "/wines" },
-  { name: "Deserts", path: "/deserts" }, // Adjust the path as needed
+  { name: "Deserts", path: "/deserts" },
+  { name: "IRD", path: "/" }, // Adjust the path as needed
 ];
 
 export default function Tabs() {
