@@ -121,7 +121,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-3xl font-bold mb-8">
-        Welcome to Our Hotel's Dining Options
+        Welcome to Our Hotel&apos;s Dining Options
       </h1>
       <input
         type="text"
