@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 
 type MenuItemType = {
+  category: string;
   name: string;
   description: string;
   cookingMethod: string;
