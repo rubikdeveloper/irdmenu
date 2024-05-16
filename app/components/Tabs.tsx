@@ -6,10 +6,9 @@ import { usePathname } from "next/navigation";
 const tabs = [
   { name: "IRD", path: "/" }, // Adjust the path as needed
   { name: "Atrium", path: "/atrium" },
-  { name: "SideHustle", path: "/sidehustle" },
+  { name: "SH", path: "/sidehustle" },
   { name: "Bar", path: "/bar" },
   { name: "Wines", path: "/wines" },
-  { name: "Deserts", path: "/deserts" },
 ];
 
 export default function Tabs() {
