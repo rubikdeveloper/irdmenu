@@ -206,24 +206,20 @@ export default function AtriumPage() {
           >
             {category}
           </h2>
-          <div
-            className={`transition-max-height duration-500 ease-in-out ${
-              expandedCategories[category]
-                ? "max-h-screen"
-                : "max-h-0 overflow-hidden"
-            }`}
-          >
-            {atriumMenu
-              .filter((item) => item.category === category)
-              .map((item) => (
-                <MenuItem
-                  key={item.name}
-                  item={item}
-                  isExpanded={!!expandedItems[item.name]}
-                  toggleExpand={toggleExpand}
-                />
-              ))}
-          </div>
+          {expandedCategories[category] && (
+            <div>
+              {atriumMenu
+                .filter((item) => item.category === category)
+                .map((item) => (
+                  <MenuItem
+                    key={item.name}
+                    item={item}
+                    isExpanded={!!expandedItems[item.name]}
+                    toggleExpand={toggleExpand}
+                  />
+                ))}
+            </div>
+          )}
         </div>
       ))}
     </div>
