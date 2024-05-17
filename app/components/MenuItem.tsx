@@ -18,7 +18,7 @@ type MenuItemProps = {
 
 const MenuItem = ({ item, isExpanded, toggleExpand }: MenuItemProps) => {
   return (
-    <div className="border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer dark:border-gray-600 dark:bg-gray-800">
+    <div className="border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer dark:border-gray-600 dark:bg-gray-800 mb-4">
       <div
         className="flex justify-between items-center"
         onClick={() => toggleExpand(item.name)}

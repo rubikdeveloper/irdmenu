@@ -149,17 +149,17 @@ export default function SideHustlePage() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 flex-1">
       {categories.map((category) => (
-        <div key={category}>
+        <div key={category} className="mb-8">
           <h2
-            className="text-2xl font-bold mb-4 cursor-pointer"
+            className="text-2xl font-bold mb-4 cursor-pointer text-primary"
             onClick={() => toggleCategoryExpand(category)}
           >
             {category}
           </h2>
           {expandedCategories[category] && (
-            <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {sideHustleMenu
                 .filter((item) => item.category === category)
                 .map((item) => (
