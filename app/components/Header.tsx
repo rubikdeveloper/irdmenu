@@ -13,7 +13,7 @@ const Header = () => {
         height={32}
         className="mr-4"
       />
-      <h1 className="text-2xl font-bold">NoMad Restaurant Management</h1>
+      <h1 className="text-2xl font-bold">In Room Dining</h1>
     </header>
   );
 };
