@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import logo from "/public/logo.png"; // Import the logo
+import logo from "/public/logo.png";
 
 const Header = () => {
   return (
-    <header className="bg-primary text-white p-4 shadow-md flex items-center">
+    <header className="bg-primary text-white p-4 shadow-md flex items-center dark:bg-secondary">
       <Image
         src={logo}
         alt="NoMad Logo"
@@ -13,7 +13,7 @@ const Header = () => {
         height={32}
         className="mr-4"
       />
-      <h1 className="text-2xl font-bold">In Room Dining Management</h1>
+      <h1 className="text-2xl font-bold">NoMad Restaurant Management</h1>
     </header>
   );
 };

@@ -94,7 +94,6 @@ export default function Home() {
   const [expandedCategories, setExpandedCategories] = useState<{
     [key: string]: boolean;
   }>({});
-  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleExpand = (itemName: string) => {
     setExpandedItems((prev) => ({
@@ -110,48 +109,32 @@ export default function Home() {
     }));
   };
 
-  const filteredItems = mostSoldItems.filter(
-    (item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-3xl font-bold mb-8">In Room Dining</h1>
-      <input
-        type="text"
-        placeholder="Search for items..."
-        className="mb-8 p-2 border border-gray-300 rounded text-black"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <section className="w-full flex flex-wrap justify-center">
-        {categories.map((category) => (
-          <div key={category} className="mb-6 w-full">
-            <h2
-              className="text-2xl font-bold mb-4 cursor-pointer"
-              onClick={() => toggleCategoryExpand(category)}
-            >
-              {category}
-            </h2>
-            {expandedCategories[category] && (
-              <div>
-                {filteredItems
-                  .filter((item) => item.category === category)
-                  .map((item) => (
-                    <MenuItem
-                      key={item.name}
-                      item={item}
-                      isExpanded={!!expandedItems[item.name]}
-                      toggleExpand={toggleExpand}
-                    />
-                  ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </section>
-    </main>
+    <div className="p-4 flex-1">
+      {categories.map((category) => (
+        <div key={category} className="mb-8">
+          <h2
+            className="text-2xl font-bold mb-4 cursor-pointer text-primary"
+            onClick={() => toggleCategoryExpand(category)}
+          >
+            {category}
+          </h2>
+          {expandedCategories[category] && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {mostSoldItems
+                .filter((item) => item.category === category)
+                .map((item) => (
+                  <MenuItem
+                    key={item.name}
+                    item={item}
+                    isExpanded={!!expandedItems[item.name]}
+                    toggleExpand={toggleExpand}
+                  />
+                ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
 }

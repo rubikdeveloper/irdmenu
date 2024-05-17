@@ -18,12 +18,12 @@ type MenuItemProps = {
 
 const MenuItem = ({ item, isExpanded, toggleExpand }: MenuItemProps) => {
   return (
-    <div className="border p-4 mb-4 w-full md:w-1/2 lg:w-1/3">
+    <div className="border border-gray-300 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer dark:border-gray-600 dark:bg-gray-800">
       <div
-        className="flex justify-between items-center cursor-pointer"
+        className="flex justify-between items-center"
         onClick={() => toggleExpand(item.name)}
       >
-        <h2 className="font-semibold">{item.name}</h2>
+        <h3 className="font-semibold text-lg">{item.name}</h3>
         <button className="text-xl">{isExpanded ? "-" : "+"}</button>
       </div>
       {isExpanded && (
