@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Tabs from "./components/Tabs";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary"; // Importing ErrorBoundary
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Hotel Menu",
-  description: "Explore the dining options available at our hotel",
-};
 
 export default function RootLayout({
   children,
@@ -17,17 +14,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen flex flex-col">
-          <header className="bg-gray-800 text-white p-4">
-            <h1 className="text-lg font-bold">Hotel Dining Options</h1>
-          </header>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <ErrorBoundary>
+          <Header />
           <Tabs />
-          <main className="flex-1">{children}</main>
-          <footer className="bg-gray-800 text-white p-4 text-center">
-            &copy; 2024 NoMad. All rights reserved.
-          </footer>
-        </div>
+          <main className="flex-1 p-8 bg-gray-100">{children}</main>
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );
