@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import MenuItem from "../components/MenuItem";
+import useExpand from "../hooks/useExpand";
 
 const atriumMenu = [
   // Starters/Snacks
@@ -136,10 +137,46 @@ const atriumMenu = [
   // Desserts
   {
     category: "Desserts",
-    name: "Chocolate Cake",
-    description: "Rich chocolate cake with a smooth chocolate ganache",
+    name: "STRAWBERRY",
+    description: "HIBISCUS SORBET, PUFFED RICE & BERRY COMPOTE",
+    cookingMethod: "Fresh",
+    allergens: ["none"],
+  },
+  {
+    category: "Desserts",
+    name: "APPLE",
+    description: "SORBET WITH SHISO, YUZU & WHITE CHOCOLATE MOUSSE",
+    cookingMethod: "Fresh",
+    allergens: ["milk"],
+  },
+  {
+    category: "Desserts",
+    name: "RASPBERRY & PISTACHIO",
+    description: "BAKED PASTRY WITH RASPBERRY & PISTACHIO ICE CREAM",
     cookingMethod: "Baked",
-    allergens: ["gluten", "dairy"],
+    allergens: ["gluten", "milk", "nuts"],
+  },
+  {
+    category: "Desserts",
+    name: "CHOCOLATE",
+    description: "SALTED CARAMEL, BANANA BRÛLÉE & BANANA CHOCOLATE ICE CREAM",
+    cookingMethod: "Baked",
+    allergens: ["gluten", "milk", "eggs"],
+  },
+  {
+    category: "Desserts",
+    name: "RHUBARB",
+    description: "FROM YORKSHIRE, WITH GINGER & COCONUT CUSTARD",
+    cookingMethod: "Fresh",
+    allergens: ["coconut"],
+  },
+  {
+    category: "Desserts",
+    name: "CHEESE",
+    description:
+      "ELRICK LOG, ST. JUDE, MONTGOMERY CHEDDAR, DEVON BLUE WITH SEASONAL ACCOMPANIMENTS",
+    cookingMethod: "Fresh",
+    allergens: ["gluten", "milk", "eggs", "mustard", "nuts"],
   },
   // Sides
   {
@@ -175,26 +212,8 @@ const atriumMenu = [
 const categories = ["Starters/Snacks", "Mains", "Desserts", "Sides"];
 
 export default function AtriumPage() {
-  const [expandedItems, setExpandedItems] = useState<{
-    [key: string]: boolean;
-  }>({});
-  const [expandedCategories, setExpandedCategories] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const toggleExpand = (itemName: string) => {
-    setExpandedItems((prev) => ({
-      ...prev,
-      [itemName]: !prev[itemName],
-    }));
-  };
-
-  const toggleCategoryExpand = (categoryName: string) => {
-    setExpandedCategories((prev) => ({
-      ...prev,
-      [categoryName]: !prev[categoryName],
-    }));
-  };
+  const { expandedItems, toggleExpand } = useExpand();
+  const { expandedCategories, toggleCategoryExpand } = useExpand();
 
   return (
     <div className="p-4 flex-1">
@@ -215,7 +234,7 @@ export default function AtriumPage() {
                     key={item.name}
                     item={item}
                     isExpanded={!!expandedItems[item.name]}
-                    toggleExpand={toggleExpand}
+                    toggleExpand={() => toggleExpand(item.name)}
                   />
                 ))}
             </div>
